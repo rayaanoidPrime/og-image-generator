@@ -1,13 +1,13 @@
 import { BASE_URL } from "@/lib/utils";
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
+import { createCanvas, loadImage } from "canvas";
 
 // Function to fetch image and extract dominant colors
 async function extractDominantColors(imageUrl: string): Promise<string[]> {
   const response = await fetch(imageUrl);
   const arrayBuffer = await response.arrayBuffer();
   const buffer = Buffer.from(arrayBuffer);
-  const { createCanvas, loadImage } = require("canvas");
 
   const canvas = createCanvas(1, 1);
   const ctx = canvas.getContext("2d");
