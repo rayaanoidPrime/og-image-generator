@@ -56,7 +56,7 @@ function getDominantColors(colors: ColorsMap): string[] {
 export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams;
   const postId = searchParams.get("postId");
-  const post = await fetch(`/api/post?postId=${postId}`, {
+  const post = await fetch(`${BASE_URL}/api/post?postId=${postId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
