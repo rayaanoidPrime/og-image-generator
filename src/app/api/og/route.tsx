@@ -2,8 +2,6 @@ import { BASE_URL } from "@/lib/utils";
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
 
-const baseUrl = BASE_URL;
-
 // Function to fetch image and extract dominant colors
 async function extractDominantColors(imageUrl: string): Promise<string[]> {
   const response = await fetch(imageUrl);
@@ -58,14 +56,14 @@ function getDominantColors(colors: ColorsMap): string[] {
 export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams;
   const postId = searchParams.get("postId");
-  const post = await fetch(`${baseUrl}/api/post?postId=${postId}`, {
+  const post = await fetch(`/api/post?postId=${postId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
   }).then((res) => res.json());
 
-  const imageUrl = `${baseUrl}${post.imageUrl}`;
+  const imageUrl = `${post.imageUrl}`;
   const hasImage = post.imageUrl.split("images/")[1] === "" ? false : true;
   const dominantColors = await extractDominantColors(imageUrl);
   const backgroundImage = `linear-gradient(to top, ${

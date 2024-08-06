@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 }
 
 const fetchPost = async (id: string) => {
-  const res = await fetch(`${BASE_URL}/api/post?postId=${id}`, {
+  const res = await fetch(`/api/post?postId=${id}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

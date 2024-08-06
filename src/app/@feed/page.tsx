@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useToast } from "@/components/ui/use-toast";
 import { Post } from "@/types/post";
-import { BASE_URL } from "@/lib/utils";
 
 const CopyIcon = () => (
   <svg
@@ -53,7 +52,7 @@ const Feed: React.FC = () => {
   }, []);
 
   const copyPostUrl = (postId: string) => {
-    const url = `${BASE_URL}/post/${postId}`;
+    const url = `/post/${postId}`;
     navigator.clipboard.writeText(url);
     const { dismiss } = toast({
       title: "Copied URL to clipboard!",
