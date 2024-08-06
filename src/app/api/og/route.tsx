@@ -63,7 +63,7 @@ export async function GET(req: NextRequest) {
     },
   }).then((res) => res.json());
 
-  const imageUrl = `${post.imageUrl}`;
+  const imageUrl = `${BASE_URL}${post.imageUrl}`;
   const hasImage = post.imageUrl.split("images/")[1] === "" ? false : true;
   const dominantColors = await extractDominantColors(imageUrl);
   const backgroundImage = `linear-gradient(to top, ${
